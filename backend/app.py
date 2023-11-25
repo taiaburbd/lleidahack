@@ -1,14 +1,13 @@
 import json
 import sqlite3
 from flask_cors import CORS
-from flask import jsonify
 
-from flask import Flask, g, request, Response
+from flask import Flask, g, request, Response, jsonify
 from markupsafe import escape
 
 DATABASE = './database/lleidahack.db'
 app = Flask(__name__)
-CORS(app, resources={r"/plants": {"origins": "http://localhost:8080"}})
+CORS(app)
 
 
 def dict_factory(cursor, row):
@@ -35,8 +34,8 @@ def close_connection(exception):
 
 
 @app.route("/hello/<name>")
-def hello(name): 
-    return f"Hello, {escape(name)}!"
+def hello(): 
+    return f"Hello, !"
 
 
 @app.route('/plants', methods=['GET'])

@@ -136,7 +136,7 @@
             </div>
             <div class="detail-box">
               <a href="#">
-                {{index}}
+                {{index.thing_id}}
               </a>
               <h6 class="badge badge-success text"> Show Summary</h6>
             </div>
