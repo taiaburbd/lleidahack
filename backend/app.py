@@ -1,12 +1,16 @@
 import json
 import sqlite3
+from flask_cors import CORS
+from flask import jsonify
+
+
 
 from flask import Flask, g, request, Response
 from markupsafe import escape
 
 DATABASE = './database/lleidahack.db'
 app = Flask(__name__)
-
+CORS(app)
 
 def dict_factory(cursor, row):
     d = {}
@@ -32,7 +36,7 @@ def close_connection(exception):
 
 
 @app.route("/hello/<name>")
-def hello(name):
+def hello(name): 
     return f"Hello, {escape(name)}!"
 
 
@@ -49,10 +53,12 @@ def get_plants_summary():
 def get_plant_summary(plant_id):
     query = f'SELECT * FROM plant_data where thing_id="{plant_id}" ORDER BY ts DESC LIMIT 1'
     conn = get_db()
-    data_points = conn.execute(query).fetchall()
+    data_point = conn.execute(query).fetchone()
     conn.close()
-    print(data_points)
-    return Response(json.dumps(data_points), mimetype="application/json")
+    if data_point:
+        return jsonify(data_point)
+    else:
+        return jsonify({}), 404
 
 
 @app.route('/plant/<plant_id>/detail', methods=['GET'])
