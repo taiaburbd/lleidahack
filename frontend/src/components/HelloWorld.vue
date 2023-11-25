@@ -142,16 +142,17 @@
           </div>
         </div>
         <div v-if="isDivVisible" class="col-md-12">
-        <div class="col-md-6">
+        <div class="col-md-3">
           <p>Plant Summary: </p>
-          <table >
+          <table class="table table-sm" >
             <tr>
               <th>item</th>
               <th>value</th>
             </tr>
             <tr v-for="(index,item) in summary" :key="index">
               <td>{{ item}}</td>
-              <td>{{ index }}</td>
+              <td v-if="item=='ts'">{{ formatTimestamp(index) }}</td>
+              <td v-else>{{ index }}</td>
             </tr>
           </table>
             <h6 >{{ item }} <span class="badge bg-warning">{{ index}}</span></h6>
