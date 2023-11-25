@@ -423,6 +423,7 @@ export default {
         .then(response => {
           // Handle the successful response
           this.data = response.data;
+          console.log(response.data)
         })
         .catch(error => {
           // Handle errors

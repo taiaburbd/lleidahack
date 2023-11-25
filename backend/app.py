@@ -3,14 +3,13 @@ import sqlite3
 from flask_cors import CORS
 from flask import jsonify
 
-
-
 from flask import Flask, g, request, Response
 from markupsafe import escape
 
 DATABASE = './database/lleidahack.db'
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/plants": {"origins": "http://localhost:8080"}})
+
 
 def dict_factory(cursor, row):
     d = {}
@@ -42,12 +41,11 @@ def hello(name):
 
 @app.route('/plants', methods=['GET'])
 def get_plants_summary():
-    query = f'SELECT distinct thing_id FROM plant_data'
+    query = f'SELECT distinct thing_id FROM plant_data group by thing_id'
     conn = get_db()
     data_points = conn.execute(query).fetchall()
     conn.close()
-    print(data_points)
-    return Response(json.dumps([plant["thing_id"] for plant in data_points]), mimetype="application/json")
+    return jsonify(data_points)
 
 @app.route('/plant/<plant_id>/summary', methods=['GET'])
 def get_plant_summary(plant_id):
