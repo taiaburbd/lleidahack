@@ -14,9 +14,9 @@ def hello(name):
     return f"Hello, {escape(name)}!"
 
 
-@app.route('/plants/ids', methods=['POST'])
+@app.route('/prediction/watering', methods=['POST'])
 def generate_watering_prediction():
-    data = request.get_json()
+    data = json.loads(request.get_json())
     predictor = WateringPredictor()
     predictions = [predictor.generate_prediction(item) for item in data]
     return Response(json.dumps(predictions), mimetype="application/json")
@@ -28,4 +28,4 @@ def hello_world():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,port=5001)

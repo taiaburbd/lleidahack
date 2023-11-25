@@ -8,21 +8,17 @@ class WateringPredictor:
         self.scaler = load('model/scaler.joblib')
 
     def generate_prediction(self, data):
+        print(data)
         thing_id = data["thing_id"]
         print(data)
         df = pd.DataFrame.from_dict(data, orient="index").T
-
-        df = df.drop(columns=["thing_id"])
-        df = df.drop(columns=["ts"])
-        print(df)
+        df = df[["temperature", "light", "airHumidity", "humidity"]]
         df = self.scaler.transform(df)
         prediction = self.model.predict(df)
         print("Prediction:", prediction[0])
         plant_good_condition = prediction[0] == 1
         reasons = []
         if not plant_good_condition:
-            print("Plant is not in a good condition. Let's see the current readings from the sensor.")
-
             original_temperature = data['temperature']
             original_humidity = data['humidity']
             original_airHumidity = data['airHumidity']
