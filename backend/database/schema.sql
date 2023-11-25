@@ -1,0 +1,10 @@
+DROP TABLE IF EXISTS plant_data;
+
+CREATE TABLE plant_data (
+    thing_id TEXT NOT NULL,
+    ts TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	temperature FLOAT NOT NULL,
+	humidity FLOAT NOT NULL,
+	airHumidity FLOAT NOT NULL,
+	light FLOAT NOT NULL
+);
