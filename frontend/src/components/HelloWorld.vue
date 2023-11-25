@@ -144,17 +144,37 @@
         <div v-if="isDivVisible" class="col-md-12">
         <div class="col-md-6">
           <p>Plant Summary: </p>
-            <h6 v-for="(index,item) in summary" :key="index">{{ item }} <span class="badge bg-warning">{{ index}}</span></h6>
-            <button class="btn btn-info" @click="toggleDivDetails()">show details</button>
+          <table >
+            <tr>
+              <th>item</th>
+              <th>value</th>
+            </tr>
+            <tr v-for="(index,item) in summary" :key="index">
+              <td>{{ item}}</td>
+              <td>{{ index }}</td>
+            </tr>
+          </table>
+            <h6 >{{ item }} <span class="badge bg-warning">{{ index}}</span></h6>
+            <button class="btn btn-info" @click="toggleDivDetails()">Show details</button>
         </div>
-        <div v-if="isDivVisibleDetails" class="col-md-12">
+        <div v-if="isDivVisibleDetails" class="col-md-6">
           <p>Plant Details: <br/>
-          <span v-for="(index) in detail" :key="index">
-            
-              <span class="badge bg-success text"  v-for="(intk,it) in index" :key="intk">{{ it }} : {{ intk }}</span>
-     
-            <br/>
-          </span>
+          <table class="table table-sm table-striped">
+            <tr>
+              <th>timestamp</th>
+              <th>temperature</th>
+              <th>humidity</th>
+              <th>airHumidity</th>
+              <th>light</th>
+            </tr>
+            <tr v-for="(index) in detail" :key="index">
+              <td>{{ formatTimestamp(index.ts) }}</td>
+              <td>{{ index.temperature }}</td>
+              <td>{{ index.humidity }}</td>
+              <td>{{ index.airHumidity }}</td>
+              <td>{{ index.light }}</td>
+            </tr>
+          </table>
           </p>
         </div>
       </div>
@@ -350,13 +370,24 @@ export default {
       isDivVisibleDetails: false,
       activePlant:false,
       summary: {},
-      detail:{}
+      detail:{},
     };
   },
   created() {
     this.fetchData();
   },
   methods: {
+    formatTimestamp(timestamp) {
+      const date = new Date(timestamp);
+      const year = date.getFullYear();
+      const month = (date.getMonth() + 1).toString().padStart(2, '0');
+      const day = date.getDate().toString().padStart(2, '0');
+      const hours = date.getHours().toString().padStart(2, '0');
+      const minutes = date.getMinutes().toString().padStart(2, '0');
+      const seconds = date.getSeconds().toString().padStart(2, '0');
+
+      return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    },
     toggleDiv(plant) {
 
       axios.get('http://127.0.0.1:5000/plant/'+plant+'/summary')
