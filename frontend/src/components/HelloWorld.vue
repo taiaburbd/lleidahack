@@ -138,6 +138,7 @@
               <a href="#">
                 {{index}}
               </a>
+              <h6 class="badge badge-success text"> Show Summary</h6>
             </div>
           </div>
         </div>
