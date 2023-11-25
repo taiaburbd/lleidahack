@@ -129,7 +129,7 @@
         </h2>
       </div>
       <div class="row">
-        <div v-for="(index, item) in data" :key="index" class="col-sm-6 col-md-4 col-lg-3" @click="toggleDiv(index)">
+        <div v-for="(index, item) in data" :key="index" class="col-sm-6 col-md-4 col-lg-3" @click="toggleDiv(index.thing_id)">
           <div class="box" >
             <div class="img-box">
               <img :src="'images/p' + (item+1) + '.png'" alt="">
