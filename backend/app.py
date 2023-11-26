@@ -1,12 +1,13 @@
 import json
 import sqlite3
-from flask_cors import CORS
+from time import sleep
 
-
+import paho.mqtt.client as mqtt
+import requests
 from flask import Flask, g, request, Response
 from flask import jsonify
+from flask_cors import CORS
 from markupsafe import escape
-import requests
 
 DATABASE = './database/lleidahack.db'
 app = Flask(__name__)
@@ -71,9 +72,30 @@ def get_plant_summary(plant_id):
         return jsonify({}), 404
 
 
+@app.route('/plant/<plant_id>/watering', methods=['GET'])
+def water_plant(plant_id):
+    client_name = 'Backend'
+    broker_address = "84.88.76.18"
+    port = 1883
+    username = "batallon_cosechador"
+    password = "C05ech@d0r!"
+    base_topic = "hackeps"
+    plant_topic = f"{base_topic}/BC/{plant_id}"
+
+    client = mqtt.Client(client_name)
+    client.username_pw_set(username, password)
+    client.connect(broker_address, port)
+    client.loop_start()  # start the loop
+    client.publish(plant_topic, 1)
+    sleep(4)
+    client.publish(plant_topic, 0)
+    client.loop_stop()  # start the loop
+    return jsonify({})
+
+
 @app.route('/plant/<plant_id>/detail', methods=['GET'])
 def get_plant_detail(plant_id):
-    query = f'SELECT * FROM plant_data where thing_id="{plant_id}" ORDER BY ts ASC'
+    query = f'SELECT * FROM plant_data where thing_id="{plant_id}" ORDER BY ts DESC'
     if "limit" in request.args.keys():
         query += f' LIMIT {request.args.get("limit")}'
     conn = get_db()
