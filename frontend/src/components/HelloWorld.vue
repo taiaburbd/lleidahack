@@ -9,7 +9,7 @@
                 <nav class="navbar navbar-expand-lg custom_nav-container ">
                     <a class="navbar-brand" href="/">
                 <span>
-                  Plant-projects
+                  Eurecat Smart Garden
                 </span>
               </a>
     
@@ -48,10 +48,10 @@
                                 <div class="col-md-7 col-lg-6 mx-auto ">
                                     <div class="detail-box">
                                         <h1>
-                                            Make Your House Alive
+                                            Make Your Garden Alive
                                         </h1>
                                         <p>
-                                            Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
+                                          Welcome to Eurecat Smart Garden, a digital space where plant care meets cutting-edge technology. Our platform harnesses the power of MQTT to gather real-time data from sensors embedded in your plants, providing a dynamic and insightful window into their well-being
                                         </p>
                                     </div>
                                 </div>
@@ -185,12 +185,11 @@
                     <div class="detail-box">
                         <div class="heading_container">
                             <h2>
-                                About <span>Us</span>
+                                About <span>Smart Garden</span>
                             </h2>
                         </div>
                         <p>
-                            There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum,
-                            you need to be sure there isn't anything embarrassing hidden in the middle of text. All
+                          Welcome to Eurecat Smart Garden, a digital space where plant care meets cutting-edge technology. Our platform harnesses the power of MQTT to gather real-time data from sensors embedded in your plants, providing a dynamic and insightful window into their well-being. <br/><br/>Whether you are a seasoned gardener or a novice plant parent, Eurecat Smart Garden empowers you with the knowledge and tools to foster a thriving indoor garden. Embark on a journey of intelligent plant care with us. Your plants deserve the best, and we are here to ensure they thrive.
                         </p>
                         <!-- <a href="">
                   Read More
@@ -220,10 +219,10 @@
                         </div>
                         <div class="detail-box">
                             <h5>
-                                Free Delivery
+                                Realtime Monitoring
                             </h5>
                             <p>
-                                Nihil molestiae non culpa dignissimos dolorem, facere amet reiciendis esse nulla ut aperiam voluptate ipsum nemo temporibus inventore hic accusantium nesciunt vero iste odit
+                              Our platform constantly collects data from sensors within your plants, ensuring you stay connected to their vital signs
                             </p>
                         </div>
                     </div>
@@ -235,10 +234,10 @@
                         </div>
                         <div class="detail-box">
                             <h5>
-                                Safe Payment
+                                AI Power Predictions
                             </h5>
                             <p>
-                                Nihil molestiae non culpa dignissimos dolorem, facere amet reiciendis esse nulla ut aperiam voluptate ipsum nemo temporibus inventore hic accusantium nesciunt vero iste odit
+                              Leveraging artificial intelligence, we analyze the collected data to predict whether your plants need watering
                             </p>
                         </div>
                     </div>
@@ -250,10 +249,10 @@
                         </div>
                         <div class="detail-box">
                             <h5>
-                                Satisfied Customers
+                                Precision Plant Care
                             </h5>
                             <p>
-                                Nihil molestiae non culpa dignissimos dolorem, facere amet reiciendis esse nulla ut aperiam voluptate ipsum nemo temporibus inventore hic accusantium nesciunt vero iste odit
+                              Move beyond traditional care routines, and automate your watering system
                             </p>
                         </div>
                     </div>
@@ -264,66 +263,12 @@
     
     <!-- end why section -->
     
-    <!-- client section -->
-    
-    <section class="client_section layout_padding-bottom">
-        <div class="container">
-            <div class="heading_container heading_center psudo_white_primary mb_45">
-                <h2>
-                    What Says Our <span>Customers</span>
-                </h2>
-            </div>
-            <div class="carousel-wrap row ">
-                <div class="owl-carousel client_owl-carousel">
-                    <div class="item">
-                        <div class="box">
-                            <div class="img-box">
-                                <img src="images/client1.jpg" alt="" class="box-img">
-                            </div>
-                            <div class="detail-box">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                </p>
-                                <h6>
-                                    Adam Miller
-                                </h6>
-                                <p>
-                                    magna aliqua
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="box">
-                            <div class="img-box">
-                                <img src="images/client2.jpg" alt="" class="box-img">
-                            </div>
-                            <div class="detail-box">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-                                </p>
-                                <h6>
-                                    Lily James
-                                </h6>
-                                <p>
-                                    magna aliqua
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- end client section -->
-    
-    
+
     <!-- footer section -->
     <footer class="footer_section">
         <div class="container">
             <a href="" class="footer-brand">
-            Plants-Project
+            Eurecat Smart Garden 
           </a>
     
         </div>

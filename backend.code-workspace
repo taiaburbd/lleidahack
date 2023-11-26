@@ -8,6 +8,9 @@
 		},
 		{
 			"path": "ai_module"
+		},
+		{
+			"path": "data_receiver"
 		}
 	],
 	"settings": {}
