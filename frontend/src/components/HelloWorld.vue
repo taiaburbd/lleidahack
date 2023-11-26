@@ -132,7 +132,7 @@
                       <br/>
                         <button class="btn btn-sm btn-danger">need_watering : {{ summary['prediction'].need_watering }}</button>
                         
-                        <a href="http://127.0.0.1:5000/plant_start_curing" class="btn btn-sm btn-warning"> Start watering {{ activePlant }}</a><br/>
+                        <a :href="'http://127.0.0.1:5000/plant_start_curing/'+activePlant" class="btn btn-sm btn-warning"> Start watering {{ activePlant }}</a><br/>
                         <br/>
                         <div class="alert alert-danger" v-if="summary['prediction']">
                             {{ summary['prediction'].reasons }}
