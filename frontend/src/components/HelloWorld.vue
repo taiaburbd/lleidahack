@@ -84,22 +84,16 @@
             </div>
             <div class="row">
                 <div v-for="(index, item) in data" :key="index" class="col-sm-6 col-md-4 col-lg-3" @click="toggleDiv(index.thing_id)">
-                    <div class="box">
+                    <div class="box d-flex flex-column align-items-center">
+                      <div class="font-weight-bold">{{index.thing_id}}</div>
                         <div class="img-box">
                             <img :src="'images/p' + (item+1) + '.png'" alt="">
                         </div>
-                        <div class="detail-box">
-                            <a href="#">
-                    {{index.thing_id}}
-                  </a>
-                            <h6 class="badge badge-success text"> Show Summary</h6>
-                        </div>
+                        <div class="badge badge-success text px-4 py-3 mt-2 text-white">Show Summary</div>
                     </div>
                 </div>
-                <div v-if="isDivVisible" class="col-md-12 row">
-                    <div class="col-md-4 card">
-                        <br>
-                        <br>
+                <div v-if="isDivVisible" class="col-md-12 row my-3">
+                    <div class="col-md-4 card p-4">
                         <p class="alert alert-success">Plant Summary: {{activePlant}}</p>
                         <table class="table table-sm">
                             <tr>
@@ -126,16 +120,18 @@
                         </table>
     
                         <h6>{{ item }} <span class="badge bg-warning">{{ index}}</span></h6>
-                        <button class="btn btn-info" @click="toggleDivDetails()">Show details</button>
+                        <button class="btn btn-primary" @click="plant_watering(activePlant)"> Start watering</button>
+                        <button class="btn btn-info mt-2" @click="toggleDivDetails()">Show details</button>
+
                     </div>
-                    <div v-if="summary['prediction'] && summary['prediction'].need_watering==true">
-                      <br/>
+                    <div class="mt-2" v-if="summary['prediction'] && summary['prediction'].need_watering==true">
                         <button class="btn btn-sm btn-danger">need_watering : {{ summary['prediction'].need_watering }}</button>
-                        
-                        <a :href="'http://127.0.0.1:5000/plant_start_curing/'+activePlant" class="btn btn-sm btn-warning"> Start watering {{ activePlant }}</a><br/>
-                        <br/>
                         <div class="alert alert-danger" v-if="summary['prediction']">
-                            {{ summary['prediction'].reasons }}
+                            <ul>
+                              <li v-for="reason in summary['prediction'].reasons" v-bind:key="reason">
+                                {{ reason }}
+                              </li>
+                            </ul>
                         </div>
                     </div>
                     <div v-if="summary['prediction'] && summary['prediction'].need_watering==false">
@@ -275,8 +271,7 @@
         <div class="footer-info">
             <div class="container">
                 <p>
-                    &copy; <span id="displayYear"></span> All Rights Reserved By
-                    <a href="">Free Html Templates</a>
+                    &copy; <span id="displayYear"></span> All Rights Reserved to myself
                 </p>
             </div>
         </div>
@@ -332,7 +327,7 @@ export default {
             this.isDivVisible = !this.isDivVisible;
         },
         toggleDivDetails() {
-            axios.get('http://127.0.0.1:5000/plant/' + this.activePlant + '/detail')
+            axios.get('http://127.0.0.1:5000/plant/' + this.activePlant + '/detail?limit=10')
                 .then(response => {
                     // Handle the successful response
                     this.detail = response.data;
@@ -344,7 +339,18 @@ export default {
                 });
             this.isDivVisibleDetails = !this.isDivVisibleDetails;
         },
-
+        plant_watering(plant_id) {
+            axios.get('http://127.0.0.1:5000/plant/' + plant_id + '/watering')
+                .then(response => {
+                    // Handle the successful response
+                    this.data = response.data;
+                    console.log(response.data)
+                })
+                .catch(error => {
+                    // Handle errors
+                    console.error('Error fetching data:', error);
+                });
+        },
         fetchData() {
             axios.get('http://127.0.0.1:5000/plants')
                 .then(response => {

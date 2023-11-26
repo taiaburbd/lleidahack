@@ -95,7 +95,7 @@ def water_plant(plant_id):
 
 @app.route('/plant/<plant_id>/detail', methods=['GET'])
 def get_plant_detail(plant_id):
-    query = f'SELECT * FROM plant_data where thing_id="{plant_id}" ORDER BY ts ASC'
+    query = f'SELECT * FROM plant_data where thing_id="{plant_id}" ORDER BY ts DESC'
     if "limit" in request.args.keys():
         query += f' LIMIT {request.args.get("limit")}'
     conn = get_db()

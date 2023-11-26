@@ -1,0 +1,7 @@
+services:
+  vizualizer:
+    image: metabase/metabase
+    volumes:
+      - ../backend/database/lleidahack.db:/var/lib/sqlite/data/lleidahack.db
+    ports:
+      - 3000:3000
