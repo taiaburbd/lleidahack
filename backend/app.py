@@ -2,9 +2,11 @@ import json
 import sqlite3
 from flask_cors import CORS
 
+
 from flask import Flask, g, request, Response
 from flask import jsonify
 from markupsafe import escape
+import requests
 
 DATABASE = './database/lleidahack.db'
 app = Flask(__name__)
@@ -55,11 +57,14 @@ def get_plant_summary(plant_id):
     data_point = conn.execute(query).fetchone()
     conn.close()
 
-    url = 'http://localhost:5001/prediction/watering'
-    print(data_point)
-    response = requests.post(url, json=json.dumps([data_point]))
-    response = json.loads(response.content)
-    data_point["prediction"] = response[0]
+    try:
+        url = 'http://localhost:5001/prediction/watering'
+        # print(data_point)
+        response = requests.post(url, json=json.dumps([data_point]))
+        response = json.loads(response.content)
+        data_point["prediction"] = response[0]
+    except:
+        print("Something went wrong when doing the prediction")
     if data_point:
         return jsonify(data_point)
     else:

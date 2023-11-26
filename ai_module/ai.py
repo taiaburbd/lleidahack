@@ -4,6 +4,13 @@ from joblib import load
 
 class WateringPredictor:
     def __init__(self):
+        #importing the os module
+        import os
+
+        #to get the current working directory
+        directory = os.getcwd()
+
+        print(directory)
         self.model = load('model/svm_model.joblib')
         self.scaler = load('model/scaler.joblib')
 
