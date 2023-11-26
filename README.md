@@ -23,9 +23,12 @@ Project is created with:
 * Python 3.*
 * Flask 
 * Machine Learning 
-* Deep Learing
+* MQTT
 * VUE CLI
 * SQLlite
+* HTML
+* CSS
+
 
 
 ## Authors
