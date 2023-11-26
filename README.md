@@ -7,7 +7,7 @@ Welcome to Eurecat Smart Garden, a digital space where plant care meets cutting-
 
 * git clone https://github.com/taiaburbd/lleidahack.git
 
-###Environment 
+##Environment 
 * Backend 
 * Frontend
 * AI Model
@@ -15,8 +15,8 @@ Welcome to Eurecat Smart Garden, a digital space where plant care meets cutting-
 * Visualizator
 * Eurecat Mission Code
   
-##Presentation
-
+## Presentation
+Eurecat Smart Garden Presentation **eurecat_mission_code/ESG_presentation.pdf**
 
 ## Technologies
 Project is created with: 
